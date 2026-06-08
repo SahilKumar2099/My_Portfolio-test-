@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0a0a0a;
+  color: #e0e0e0;
+  font-family: 'Courier New', monospace;
+  scroll-behavior: smooth;
+}
+
+/* Hero */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(ellipse at center, #0f2027 0%, #0a0a0a 70%);
+}
+
+.pre-title {
+  color: #00ff88;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  color: #ffffff;
+  letter-spacing: 2px;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: 14px;
+  letter-spacing: 1px;
+}
+
+/* Sections */
+section {
+  padding: 80px 10%;
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: #00ff88;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+/* About */
+.degree-card {
+  border-left: 3px solid #00ff88;
+  padding: 14px 22px;
+  margin-bottom: 20px;
+  background: #111;
+  border-radius: 0 6px 6px 0;
+  transition: transform 0.2s;
+}
+
+.degree-card:hover {
+  transform: translateX(6px);
+}
+
+.degree-card h3 {
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.degree-card p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Skills */
+.skill-item {
+  margin-bottom: 24px;
+}
+
+.skill-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+.skill-bar {
+  background: #1a1a1a;
+  border-radius: 4px;
+  height: 10px;
+  overflow: hidden;
+  border: 1px solid #222;
+}
+
+.skill-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00ff88, #00c9ff);
+  border-radius: 4px;
+  transition: width 1.2s ease-in-out;
+}
+
+/* Contact */
+.social-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #00ff88;
+  text-decoration: none;
+  font-size: 1rem;
+  border: 1px solid #00ff8844;
+  padding: 12px 24px;
+  border-radius: 4px;
+  transition: all 0.3s;
+  background: #111;
+}
+
+.social-links a:hover {
+  background: #00ff8815;
+  border-color: #00ff88;
+  transform: translateY(-2px);
+}

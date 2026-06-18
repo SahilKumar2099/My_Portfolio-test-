@@ -1,28 +1,27 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+const monitorCodeLines = [
+  "import { tensorflow as tf } from 'ai-core';",
+  "const model = tf.sequential();",
+  "model.add(tf.layers.dense({units: 128, activation: 'relu'}));",
+  "model.compile({optimizer: 'adam', loss: 'meanSquaredError'});",
+  "// Training system architecture on dataset...",
+  "await model.fit(trainData, trainLabels, {epochs: 50});",
+  "STATUS: Weights optimized successfully.",
+  "System_Core_Interference: 0.0021s",
+  "Neural_Network_Status: ACTIVE [100%]",
+  "Executing sub-routine: analytics_parse.py",
+  "[*] Fetching live pipeline variables...",
+  "SUCCESS: Target deployed to cluster gateway."
+];
 
 function TerminalMonitor() {
   const canvasRef = useRef(null);
   const [systemStatus, setSystemStatus] = useState("INITIALIZING");
 
-  const streamSpeed = 2;              
-  const fontColor = "#00ff88";        
+  const streamSpeed = 2;
+  const fontColor = "#00ff88";
   const consoleHeader = "sahil@kernel:~";
-  
-  const monitorCodeLines = [
-    "import { tensorflow as tf } from 'ai-core';",
-    "const model = tf.sequential();",
-    "model.add(tf.layers.dense({units: 128, activation: 'relu'}));",
-    "model.compile({optimizer: 'adam', loss: 'meanSquaredError'});",
-    "// Training system architecture on dataset...",
-    "await model.fit(trainData, trainLabels, {epochs: 50});",
-    "STATUS: Weights optimized successfully.",
-    "System_Core_Interference: 0.0021s",
-    "Neural_Network_Status: ACTIVE [100%]",
-    "Executing sub-routine: analytics_parse.py",
-    "[*] Fetching live pipeline variables...",
-    "SUCCESS: Target deployed to cluster gateway."
-  ];
-
 
   useEffect(() => {
     const canvas = canvasRef.current;

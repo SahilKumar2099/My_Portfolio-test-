@@ -11,17 +11,66 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Hero */
+.app {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
 .hero {
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   background: radial-gradient(ellipse at center, #0f2027 0%, #0a0a0a 70%);
+  padding: 80px 0;
 }
 
+.hero-content {
+  width: min(1100px, 100%);
+  padding: 0 24px;
+  z-index: 1;
+}
+
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  background-image: radial-gradient(circle at 20% 20%, rgba(0, 255, 136, 0.08), transparent 20%),
+                    radial-gradient(circle at 80% 80%, rgba(0, 201, 255, 0.06), transparent 22%);
+  z-index: 0;
+}
+
+.about {
+  width: 100%;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 40px;
+  align-items: stretch;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.education-column,
+.about-me-column {
+  width: 100%;
+}
+
+.contact {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Hero */
 .pre-title {
   color: #00ff88;
   font-size: 1rem;
@@ -131,4 +180,114 @@ h2 {
   background: #00ff8815;
   border-color: #00ff88;
   transform: translateY(-2px);
+}
+
+section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.skills-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  section {
+    padding: 60px 6%;
+  }
+
+  .hero {
+    min-height: 80vh;
+    padding: 60px 0;
+  }
+
+  .hero-content {
+    padding: 0 18px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 7vw, 4rem);
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .terminal-text-box {
+    padding: 24px;
+  }
+
+  .degree-card {
+    padding: 16px 20px;
+  }
+
+  .social-links {
+    gap: 16px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 50px 5%;
+  }
+
+  .hero {
+    padding: 60px 0 40px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 9vw, 3.5rem);
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    margin-bottom: 28px;
+  }
+
+  .tagline {
+    font-size: clamp(0.95rem, 3.5vw, 1.05rem);
+  }
+
+  .degree-card {
+    padding: 14px 18px;
+  }
+
+  .terminal-text-box {
+    padding: 20px;
+  }
+
+  .paragraph-container {
+    min-height: auto;
+    align-items: flex-start;
+  }
+
+  .social-links {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .social-links a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 540px) {
+  section {
+    padding: 40px 4%;
+  }
+
+  .hero {
+    padding: 50px 0 30px;
+  }
+
+  .social-links {
+    gap: 10px;
+  }
 }

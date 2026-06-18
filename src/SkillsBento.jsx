@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCode, FaBrain, FaDatabase, FaServer, FaTerminal, FaGitAlt } from 'react-icons/fa';
 

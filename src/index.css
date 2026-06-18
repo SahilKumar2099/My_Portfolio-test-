@@ -26,6 +26,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -78,11 +80,14 @@
 /* --- BENTO SKILLS GRID SYSTEM --- */
 .skills-section {
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .bento-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   grid-auto-rows: minmax(160px, auto);
   gap: 20px;
   width: 100%;
@@ -295,6 +300,7 @@
   /* Creates a subtle color gradient across the text */
   background: linear-gradient(90deg, #ffffff, #9ca3af, #ffffff);
   background-size: 200% auto;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   

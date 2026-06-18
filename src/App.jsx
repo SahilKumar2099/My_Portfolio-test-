@@ -1,7 +1,8 @@
 import Hero from "./Hero"
 import About from "./About"
-import Skills from "./Skills"
 import Contact from "./Contact"
+import CodeBackground from "./CodeBackground"
+import SkillsBento from "./SkillsBento"
 import './App.css'
 
 function App() {
@@ -9,8 +10,9 @@ function App() {
     <div className="app">
       <Hero />
       <About />
-      <Skills />
+      <SkillsBento/>
       <Contact />
+      <CodeBackground/>
     </div>
   )
 }

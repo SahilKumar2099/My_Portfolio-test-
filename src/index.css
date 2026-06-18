@@ -1,111 +1,278 @@
-:root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+/* Position the real-time canvas code rain accurately behind layouts */
+.realtime-code-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.18; /* Kept subtle so your frontend portfolio remains readable */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
-}
-
-body {
-  margin: 0;
-}
-
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+/* Custom terminal design system for the AI-ML profile container */
+.about-me-column {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
+.terminal-text-box {
+  background: rgba(10, 12, 22, 0.85);
+  border: 1px solid var(--border-color);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.terminal-header {
+  color: var(--accent-blue);
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.paragraph-container {
+  min-height: 140px; /* Locks structure size during transitions */
+  display: flex;
+  align-items: center;
+}
+
+.rotating-paragraph {
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
+}
+
+.terminal-footer {
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-neon);
+  border-radius: 50%;
+  display: inline-block;
+  animation: corePulse 1.8s infinite ease-in-out;
+}
+
+@keyframes corePulse {
+  0%, 100% { transform: scale(0.8); opacity: 0.5; box-shadow: 0 0 0 0 rgba(0, 255, 136, 0); }
+  50% { transform: scale(1.1); opacity: 1; box-shadow: 0 0 8px 2px rgba(0, 255, 136, 0.4); }
+}
+
+/* --- BENTO SKILLS GRID SYSTEM --- */
+.skills-section {
+  width: 100%;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: minmax(160px, auto);
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Base style config for all modules inside the grid */
+.bento-card {
+  background: rgba(13, 16, 26, 0.75);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-card:hover {
+  border-color: rgba(0, 255, 136, 0.35);
+  box-shadow: 0 12px 40px -10px rgba(0, 255, 136, 0.15);
+}
+
+/* Explicit Bento Sizing Assignments */
+.bento-large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.bento-medium {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+.bento-small {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.bento-wide {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+/* Card Content Styling */
+.bento-card h3 {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin: 12px 0 8px 0;
   font-weight: 500;
-  color: var(--text-h);
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+.bento-card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+/* Dashboard Badges and Tech Pill Indicators */
+.bento-icon-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.neon-icon { color: var(--accent-neon); font-size: 1.5rem; }
+.blue-icon { color: var(--accent-blue); font-size: 1.5rem; }
+
+.bento-tag {
+  font-size: 0.75rem;
+  background: rgba(0, 255, 136, 0.08);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  color: var(--accent-neon);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.tag-blue {
+  background: rgba(0, 201, 255, 0.08);
+  border-color: rgba(0, 201, 255, 0.2);
+  color: var(--accent-blue);
+}
+
+.mini-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.mini-tags span {
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #d1d5db;
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Layout modifications for the wide card block */
+.wide-content-split {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 20px;
+}
+
+.alignment-right {
+  justify-content: flex-end;
+  max-width: 50%;
+}
+
+/* Dedicated background color accents for special bento modules */
+.accent-glow {
+  border-color: rgba(0, 201, 255, 0.15);
+}
+.accent-glow:hover {
+  border-color: rgba(0, 201, 255, 0.4);
+  box-shadow: 0 12px 40px -10px rgba(0, 201, 255, 0.15);
+}
+
+/* --- RESPONSIVE MOBILE OVERRIDES --- */
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .bento-large, .bento-medium, .bento-wide, .bento-small {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+  .wide-content-split {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .alignment-right {
+    justify-content: flex-start;
+    max-width: 100%;
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+
+@media (max-width: 600px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-large, .bento-medium, .bento-wide, .bento-small {
+    grid-column: span 1;
   }
 }
-p {
-  margin: 0;
+/* --- CYBERPUNK GLOWING TAGLINE ANIMATION --- */
+.glowing-tagline {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 14px;
+  
+  /* Creates a subtle color gradient across the text */
+  background: linear-gradient(90deg, #ffffff, #9ca3af, #ffffff);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Attaches the glow loop */
+  animation: textGlowPulse 3s ease-in-out infinite alternate, shineMove 6s linear infinite;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+/* The core glowing mechanics changing the aura size and intensity */
+@keyframes textGlowPulse {
+  0% {
+    text-shadow: 
+      0 0 4px rgba(0, 255, 136, 0.2),
+      0 0 10px rgba(0, 255, 136, 0.1);
+  }
+  100% {
+    text-shadow: 
+      0 0 8px rgba(0, 255, 136, 0.6),
+      0 0 20px rgba(0, 255, 136, 0.3),
+      0 0 30px rgba(0, 201, 255, 0.2); /* Soft cyber blue undertone */
+  }
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+/* Moves the text gradient highlight smoothly across the letters */
+@keyframes shineMove {
+  to { background-position: 200% center; }
 }

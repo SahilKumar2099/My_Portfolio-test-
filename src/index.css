@@ -109,7 +109,7 @@
   box-shadow: 0 12px 40px -10px rgba(0, 255, 136, 0.15);
 }
 
-/* Explicit Bento Sizing Assignments */
+/* Explicit Bento Sizing Assignments (Desktop Default) */
 .bento-large {
   grid-column: span 2;
   grid-row: span 2;
@@ -213,33 +213,78 @@
   box-shadow: 0 12px 40px -10px rgba(0, 201, 255, 0.15);
 }
 
-/* --- RESPONSIVE MOBILE OVERRIDES --- */
-@media (max-width: 900px) {
+/* --- OPTIMIZED RESPONSIVE BREAKPOINTS --- */
+
+/* Tablets & Small Laptops */
+@media (max-width: 1024px) {
   .bento-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr); /* Balanced 2-column fallback layout */
+    grid-auto-rows: minmax(150px, auto);
+    gap: 16px;
   }
-  .bento-large, .bento-medium, .bento-wide, .bento-small {
+
+  /* Intelligently map bento cards across a dual-column layout */
+  .bento-large {
     grid-column: span 2;
-    grid-row: auto;
+    grid-row: span 2;
   }
+  
+  .bento-medium {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+  
+  .bento-wide {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  
+  .bento-small {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .wide-content-split {
+    gap: 16px;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr; /* Pure single-column linear flow */
+    grid-auto-rows: auto; /* Drop rigid box tracks so wrapping copy doesn't spill over */
+    gap: 16px;
+  }
+
+  /* Force uniform row layout across all custom configurations */
+  .bento-large, 
+  .bento-medium, 
+  .bento-wide, 
+  .bento-small {
+    grid-column: span 1;
+    grid-row: auto;
+    min-height: 180px; /* Maintains clean card structural baseline */
+  }
+
+  /* Change inner layout orientation from horizontal to vertical */
   .wide-content-split {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
   }
+
   .alignment-right {
     justify-content: flex-start;
     max-width: 100%;
   }
+
+  /* Slightly tighter paddings for compact viewports */
+  .bento-card {
+    padding: 20px;
+  }
 }
 
-@media (max-width: 600px) {
-  .bento-grid {
-    grid-template-columns: 1fr;
-  }
-  .bento-large, .bento-medium, .bento-wide, .bento-small {
-    grid-column: span 1;
-  }
-}
 /* --- CYBERPUNK GLOWING TAGLINE ANIMATION --- */
 .glowing-tagline {
   font-size: clamp(1rem, 2vw, 1.25rem);
